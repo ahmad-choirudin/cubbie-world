@@ -16,7 +16,7 @@ export default function Collectibles() {
         <img
           src={`${base}images/characters/collectibles.jpg`}
           alt="A suited Cubbie displayed in a glass case"
-          className="rv aspect-square w-full rounded-2xl object-cover ring-1 ring-white/10"
+          className="rv aspect-[3/4] w-full rounded-2xl object-cover object-top ring-1 ring-white/10"
         />
         <div>
           <span className="rounded-full border border-acc/60 px-3 py-1 text-xs text-acc">NFT minting: coming soon</span>
