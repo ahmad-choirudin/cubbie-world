@@ -48,7 +48,7 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:5173> in your browser. In GitHub Codespaces, tap **Open in Browser** when the port notification appears.
+Open <http://localhost:5173/cubbie-world/> in your browser. In GitHub Codespaces, tap **Open in Browser** when the port notification appears.
 
 To create a production build:
 
@@ -56,6 +56,10 @@ To create a production build:
 npm run build
 npm run preview
 ```
+
+## ◈ DEPLOY
+
+The site deploys to GitHub Pages through `.github/workflows/deploy.yml` on every push to `main`. In the repo, go to **Settings → Pages** and set **Source** to **GitHub Actions**. If you rename the repo, update `base` in `vite.config.ts`.
 
 ## ◈ PROJECT STRUCTURE
 
@@ -110,4 +114,3 @@ Cubbie World is the front door to a small set of Web3 projects: **Cubbie NFT Mar
 ## ◈ LICENSE
 
 Add a license here, for example MIT, before sharing the repo publicly. All Cubbie artwork and characters remain the property of their creator.
-

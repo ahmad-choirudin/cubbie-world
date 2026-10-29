@@ -6,7 +6,7 @@ export type Character = {
   image: string;
 };
 
-const dir = "/images/characters/";
+const dir = `${import.meta.env.BASE_URL}images/characters/`;
 
 export const characters: Character[] = [
   { id: "main-character", name: "Main Character", label: "Original", description: "The face of Cubbie World, in a black tech hoodie with glowing green circuitry.", image: dir + "main-character.jpg" },

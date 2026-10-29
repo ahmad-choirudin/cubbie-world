@@ -3,7 +3,7 @@ export type Outfit = { name: string; group: Group; description: string; image: s
 
 export const groups: Group[] = ["Street", "Soft", "Chaos"];
 
-const img = (n: number) => `/images/characters/outfit-${n}.jpg`;
+const img = (n: number) => `${import.meta.env.BASE_URL}images/characters/outfit-${n}.jpg`;
 
 export const outfits: Outfit[] = [
   { name: "Streetwear", group: "Street", description: "Black hoodie, crossbody bag and lime-soled sneakers for everyday wear.", image: img(1) },
