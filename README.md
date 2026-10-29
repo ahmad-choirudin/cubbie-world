@@ -9,7 +9,7 @@
 
 **Small creatures. Big energy.**
 <br>
-A character-driven landing site in black and lime: dress up the Cubbie, browse the collection and explore the little universe around it.
+A character-driven landing site in black and lime: meet the Cubbie, explore its universe and follow the Web3 projects built around it.
 
 [GITHUB PROFILE](https://github.com/ahmad-choirudin)
 
@@ -24,11 +24,12 @@ A character-driven landing site in black and lime: dress up the Cubbie, browse t
 
 | | |
 | --- | --- |
-| **01 / DESIGN**<br>Dark theme with a lime accent, fully responsive. | **02 / SECTIONS**<br>Hero, OutfitLab, Collection, Story and Contact. |
-| **03 / OUTFITLAB**<br>Pick Street, Soft or Chaos and see each outfit larger, with arrows to step through. | **04 / COLLECTION**<br>Swipeable trading-style cards that open in a full-size viewer. |
-| **05 / ACCESSIBILITY**<br>Respects `prefers-reduced-motion`, with visible keyboard focus. | **06 / EASY TO EDIT**<br>Content lives in simple data files under `src/data/`, so text and links change without touching components. |
+| **01 / DESIGN**<br>Dark theme with a lime accent, fully responsive. | **02 / SECTIONS**<br>Hero, Character Sheet, Cubbie Crew, Collectibles, Universe, Iconic Poster, Brand Banner, Story and Contact. |
+| **03 / CHARACTER SHEET**<br>Switch between front, side and back views of the same character. | **04 / COLLECTIBLES**<br>Digital artworks with Original, Cyberpunk and Limited Edition labels. |
+| **05 / MOTION**<br>Scrolling mantra strip, smooth entrance animations and a slowly drifting asset banner. | **06 / ACCESSIBILITY**<br>Respects `prefers-reduced-motion`, with visible keyboard focus. |
+| **07 / EASY TO EDIT**<br>Text and links live in simple data files under `src/data/`, so updates never touch components. | **08 / TWO HOSTS**<br>Uses a relative base path, so the same build works on Vercel and GitHub Pages. |
 
-> The collection shows digital artworks only. They are **not minted as NFTs yet**.
+> The collectibles are digital artworks only. They are **not minted as NFTs yet**.
 
 ## ◈ TECH STACK
 
@@ -36,6 +37,12 @@ A character-driven landing site in black and lime: dress up the Cubbie, browse t
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=github&logoColor=white)
+
+## ◈ PAGE FLOW
+
+Hero → Marquee → Character Sheet → Cubbie Crew → Collectibles → Shapes of the Universe → Iconic Poster → Cubbie Universe → Brand Banner → Story → Contact
 
 ## ◈ GETTING STARTED
 
@@ -48,62 +55,71 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:5173/cubbie-world/> in your browser. In GitHub Codespaces, tap **Open in Browser** when the port notification appears.
+Open <http://localhost:5173> in your browser. In GitHub Codespaces, tap **Open in Browser** when the port notification appears.
 
-To create a production build:
-
-```bash
-npm run build
-npm run preview
-```
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Create a production build in `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run typecheck` | Check the TypeScript types |
 
 ## ◈ DEPLOY
 
-The site deploys to GitHub Pages through `.github/workflows/deploy.yml` on every push to `main`. In the repo, go to **Settings → Pages** and set **Source** to **GitHub Actions**. If you rename the repo, update `base` in `vite.config.ts`.
+- **Vercel:** import the repo, then use the Vite preset with build command `npm run build` and output directory `dist`.
+- **GitHub Pages:** the workflow in `.github/workflows/deploy.yml` builds and publishes on every push to `main`. In **Settings → Pages**, set **Source** to **GitHub Actions**.
+
+`vite.config.ts` uses `base: "./"`, so no changes are needed to switch between the two.
 
 ## ◈ PROJECT STRUCTURE
 
 ```
 cubbie-world/
+├── .github/workflows/deploy.yml
 ├── public/
-│   ├── images/characters/    # hero, outfit-1..8 and collection images
+│   ├── images/characters/     # hero, banner, character-sheet, crew, collectibles, universe, poster, abstract
 │   ├── favicon.svg
-│   └── og-image.png          # social share image
+│   └── og-image.png           # social share image
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.tsx
 │   │   ├── Hero.tsx
-│   │   ├── Marquee.tsx       # scrolling mantra strip
-│   │   ├── OutfitLab.tsx
-│   │   ├── Collection.tsx
-│   │   ├── CharacterCard.tsx
-│   │   ├── CharacterModal.tsx
-│   │   ├── About.tsx         # the Story section
-│   │   └── Footer.tsx        # contact and copyright
+│   │   ├── Marquee.tsx        # scrolling mantra strip
+│   │   ├── CharacterSheet.tsx
+│   │   ├── Crew.tsx
+│   │   ├── Collectibles.tsx
+│   │   ├── AbstractAsset.tsx  # Shapes of the Universe
+│   │   ├── IconicPoster.tsx
+│   │   ├── Universe.tsx       # portals to the Web3 projects
+│   │   ├── BrandBanner.tsx
+│   │   ├── About.tsx          # the Story section
+│   │   └── Footer.tsx         # contact and copyright
 │   ├── data/
-│   │   ├── characters.ts     # collection items and labels
-│   │   ├── outfits.ts        # OutfitLab items and groups
-│   │   └── projects.ts       # project, social and contact links
+│   │   ├── characters.ts      # collectible and poster details
+│   │   └── projects.ts        # project, social and contact links
 │   ├── App.tsx
 │   ├── index.css
 │   └── main.tsx
 ├── index.html
-├── tailwind.config.js        # colors and fonts
+├── tailwind.config.js         # colors and fonts
+├── vite.config.ts
 └── package.json
 ```
 
 ## ◈ MAKE IT YOURS
 
-1. **Links:** replace every `"#"` in `src/data/projects.ts` with your real URLs.
-2. **Outfits:** edit names, groups and descriptions in `src/data/outfits.ts`.
-3. **Collection:** edit titles, labels and descriptions in `src/data/characters.ts`.
+1. **Links:** replace every `"#"` in `src/data/projects.ts` (projects, X, Telegram, Discord, portfolio, GitHub, email).
+2. **Collectibles and poster:** edit names, labels and descriptions in `src/data/characters.ts`.
+3. **Crew and shapes:** edit the short arrays at the top of `Crew.tsx` and `AbstractAsset.tsx`.
 4. **Images:** swap the files in `public/images/characters/`, keeping the same names.
 5. **Look:** colors (`#090A09`, `#C4F56A`) and fonts (Space Grotesk, Inter) live in `tailwind.config.js`.
+6. **SEO:** update the title, description and `og-image.png` in `index.html` and `public/`.
 
 ## ◈ ROADMAP
 
-- [x] Responsive layout, OutfitLab, collection viewer and story section
-- [ ] Entrance, hover and modal animations with Motion for React
+- [x] Responsive layout, character sections, universe portals and story
+- [x] Deploy on Vercel and GitHub Pages
+- [ ] More motion with Motion for React
 - [ ] Interactive 3D viewer with a `.glb` model (Three.js / React Three Fiber)
 - [ ] Wallet connection and NFT minting, once a deployed smart contract is ready
 
