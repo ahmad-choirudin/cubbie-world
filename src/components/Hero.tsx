@@ -6,9 +6,9 @@ export default function Hero() {
       <div className="mx-auto w-full max-w-6xl px-5 pt-10 md:py-20">
         <div className="max-w-xl">
           <h1 className="font-d text-5xl font-bold uppercase leading-[0.98] sm:text-6xl lg:text-7xl">
-            Small creatures.
+            A Little Character.
             <br />
-            <span className="text-acc">Big energy.</span>
+            <span className="text-acc">A Bigger Universe.</span>
           </h1>
           <p className="mt-5 text-xl text-dim">Collect your vibe. Build your Cubbie.</p>
           <div className="mt-8 flex flex-wrap gap-3">
