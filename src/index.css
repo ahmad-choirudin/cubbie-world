@@ -8,9 +8,6 @@ body { @apply bg-bg font-b text-ink antialiased; }
 
 .rv { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .rv.in { opacity: 1; transform: none; }
-.fade-l { mask-image: linear-gradient(to right, transparent, #000 30%); -webkit-mask-image: linear-gradient(to right, transparent, #000 30%); }
-@keyframes sw { from { opacity: 0.4; } to { opacity: 1; } }
-.sw { animation: sw 0.25s ease-out; }
 @keyframes mq { to { transform: translateX(-50%); } }
 .marquee { animation: mq 32s linear infinite; }
 .no-bar { scrollbar-width: none; }
@@ -19,17 +16,13 @@ body { @apply bg-bg font-b text-ink antialiased; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .rv { opacity: 1; transform: none; transition: none; }
-  .sw, .marquee { animation: none; }
+  .marquee { animation: none; }
 }
 
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 .rise { opacity: 0; animation: rise 0.7s ease-out forwards; }
 @keyframes nudge { 0%, 100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(6px); opacity: 0.4; } }
 .nudge { animation: nudge 1.6s ease-in-out infinite; }
-.mascot {
-  -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 65%, transparent 100%);
-  mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 65%, transparent 100%);
-}
 @media (prefers-reduced-motion: reduce) {
   .rise { opacity: 1; animation: none; }
   .nudge { animation: none; }
