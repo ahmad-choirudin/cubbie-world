@@ -9,6 +9,7 @@ import Universe from "./components/Universe";
 import IconicPoster from "./components/IconicPoster";
 import AbstractAsset from "./components/AbstractAsset";
 import BrandBanner from "./components/BrandBanner";
+import CubbieStory from "./components/CubbieStory";
 import About from "./components/About";
 import Footer from "./components/Footer";
 
@@ -39,6 +40,7 @@ export default function App() {
         <AbstractAsset />
         <IconicPoster />
         <Universe />
+        <CubbieStory />
         <BrandBanner />
         <About />
       </main>
