@@ -77,7 +77,7 @@ Open <http://localhost:5173> in your browser. In GitHub Codespaces, tap **Open i
 cubbie-world/
 ├── .github/workflows/deploy.yml
 ├── public/
-│   ├── images/characters/     # hero, banner, character-sheet, crew, collectibles, universe, poster, abstract
+│   ├── images/characters/     # hero, banner, front/side/back, crew, collectibles, universe, poster, abstract, story-1
 │   ├── favicon.svg
 │   └── og-image.png           # social share image
 ├── src/
