@@ -8,23 +8,43 @@ const cards = [
 
 export default function About() {
   return (
-    <section id="story" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-24">
-      <p className="text-sm text-dim">About / Story</p>
-      <div className="mt-4 grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end">
-        <h2 className="font-d text-4xl font-bold uppercase leading-[1.02] sm:text-6xl">Not just a toy. Your little universe.</h2>
-        <p className="text-dim">Cubbie is a character with a different style for every mood, and a set of Web3 tools built around it.</p>
+    <section
+      id="story"
+      className="mx-auto max-w-[90rem] scroll-mt-20 px-5 py-24 md:px-10 lg:py-32"
+    >
+      <p className="kicker text-acc">About / Story</p>
+      <div className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">
+        <h2 className="display text-[clamp(2.2rem,6vw,5.5rem)] lg:col-span-8">
+          Not just a toy. <span className="text-acc">Your little universe.</span>
+        </h2>
+        <p className="max-w-sm text-dim lg:col-span-3 lg:col-start-10">
+          Cubbie is a character with a different style for every mood, and a set of Web3 tools built around it.
+        </p>
       </div>
-      <div className="mt-10 grid gap-5 md:grid-cols-3">
-        {cards.map(([t, d]) => (
-          <div key={t} className="rv rounded-2xl bg-slab p-6 ring-1 ring-white/10">
-            <h3 className="font-d text-xl font-bold">{t}</h3>
+
+      <div className="mt-16 grid gap-10 border-t border-edge pt-8 md:grid-cols-3 md:gap-8">
+        {cards.map(([t, d], i) => (
+          <div key={t} className="rv">
+            <p className="kicker text-acc/70">0{i + 1}</p>
+            <h3 className="font-d mt-3 text-xl font-bold uppercase">{t}</h3>
             <p className="mt-2 text-sm text-dim">{d}</p>
           </div>
         ))}
       </div>
-      <div className="mt-8 flex flex-wrap gap-3">
-        <a href={links.portfolio} className="rounded-full bg-acc px-6 py-3 text-sm font-bold uppercase text-bg hover:brightness-110">Main portfolio</a>
-        <a href={links.github} className="rounded-full border border-white/25 px-6 py-3 text-sm font-bold uppercase hover:border-acc">GitHub</a>
+
+      <div className="mt-12 flex flex-wrap gap-3">
+        <a
+          href={links.portfolio}
+          className="kicker bg-acc px-6 py-4 text-bg transition hover:bg-ink"
+        >
+          Main portfolio
+        </a>
+        <a
+          href={links.github}
+          className="kicker border border-white/30 px-6 py-4 transition hover:border-acc hover:text-acc"
+        >
+          GitHub
+        </a>
       </div>
     </section>
   );
