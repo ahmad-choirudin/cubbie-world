@@ -7,12 +7,12 @@ export default function Collection() {
   const [active, setActive] = useState<Character | null>(null);
 
   return (
-    <section id="collectibles" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-24">
-      <h2 className="font-d text-4xl font-bold">Collectibles</h2>
-      <p className="mt-3 max-w-lg text-dim">Cubbie characters as digital artworks. They are not minted as NFTs yet.</p>
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {characters.map((c) => (
-          <CharacterCard key={c.id} character={c} onOpen={setActive} />
+    <section id="collection" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-24">
+      <h2 className="font-d text-4xl font-bold">Collection</h2>
+      <p className="mt-3 max-w-lg text-dim">Digital artworks you can swipe through. They are not minted as NFTs yet.</p>
+      <div className="no-bar -mx-5 mt-10 flex snap-x gap-4 overflow-x-auto px-5 pb-4">
+        {characters.map((c, i) => (
+          <CharacterCard key={c.id} character={c} no={String(i + 1).padStart(3, "0")} onOpen={setActive} />
         ))}
       </div>
       {active && <CharacterModal character={active} onClose={() => setActive(null)} />}
