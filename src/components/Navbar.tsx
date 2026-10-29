@@ -14,7 +14,7 @@ export default function Navbar() {
             <a key={n} href={h} className="hover:text-acc">{n}</a>
           ))}
         </div>
-        <a href="#sheet" className="rounded-full bg-acc px-5 py-2 text-sm font-bold uppercase text-bg hover:brightness-110">Dress up</a>
+        <a href="#universe" className="rounded-full bg-acc px-5 py-2 text-sm font-bold uppercase text-bg hover:brightness-110">Enter Universe</a>
       </nav>
       <div className="no-bar mx-auto mt-2 flex max-w-6xl gap-5 overflow-x-auto px-3 text-xs uppercase text-dim md:hidden">
         {items.map(([n, h]) => (
