@@ -1,4 +1,8 @@
+import { useState } from "react";
 import { heroImage } from "../data/characters";
+import CubbieViewer from "./CubbieViewer";
+
+const base = import.meta.env.BASE_URL;
 
 const fade = {
   background:
@@ -6,6 +10,8 @@ const fade = {
 };
 
 export default function Hero() {
+  const [ready, setReady] = useState(false);
+
   return (
     <section
       id="top"
@@ -17,13 +23,21 @@ export default function Hero() {
           alt="Cubbie in a black tech jacket with glowing lime details, making a peace sign"
           width={1376}
           height={768}
-          className="h-full w-full object-cover object-[88%_center] lg:object-[85%_center]"
+          className={`h-full w-full object-cover object-[88%_center] transition-opacity duration-700 lg:object-[85%_center] ${ready ? "opacity-0" : "opacity-100"}`}
         />
-        <div className="absolute inset-0" style={fade} />
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-bg via-bg/30 to-transparent lg:block" />
+        <div
+          className={`pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_72%_55%,rgba(196,245,106,0.12),transparent_60%)] transition-opacity duration-700 ${ready ? "opacity-100" : "opacity-0"}`}
+        />
+        <div className="pointer-events-none absolute inset-0" style={fade} />
+        <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-bg via-bg/30 to-transparent lg:block" />
+        <CubbieViewer
+          src={`${base}models/cubbie.glb`}
+          onReady={() => setReady(true)}
+          className="absolute inset-0 lg:left-[42%]"
+        />
       </div>
 
-      <div className="relative z-10 mx-auto -mt-14 w-full max-w-[90rem] px-5 pb-10 md:px-10 lg:mt-0 lg:pb-14">
+      <div className="pointer-events-none relative z-10 mx-auto -mt-14 w-full max-w-[90rem] px-5 pb-10 md:px-10 lg:mt-0 lg:pb-14">
         <p className="kicker rise text-acc" style={{ animationDelay: "0.05s" }}>
           Cubbie World · Character Universe
         </p>
@@ -38,7 +52,7 @@ export default function Hero() {
         </h1>
 
         <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="rise" style={{ animationDelay: "0.3s" }}>
+          <div className="rise pointer-events-auto" style={{ animationDelay: "0.3s" }}>
             <p className="max-w-xs text-lg text-dim">Collect your vibe. Build your Cubbie.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -57,7 +71,7 @@ export default function Hero() {
           </div>
           <a
             href="#sheet"
-            className="kicker hidden items-center gap-3 text-dim transition hover:text-acc lg:flex"
+            className="kicker pointer-events-auto hidden items-center gap-3 text-dim transition hover:text-acc lg:flex"
           >
             Scroll <span className="nudge inline-block">↓</span>
           </a>
