@@ -14,7 +14,7 @@ export default function Universe() {
       <img
         src={`${base}images/characters/universe.jpg`}
         alt="A small Cubbie explorer looks at a glowing green portal in a world of black monoliths"
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-[62%_center]"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-right md:object-[62%_center]"
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-bg via-bg/30 to-bg" />
       <div className="mx-auto flex min-h-[90vh] max-w-6xl flex-col justify-between gap-16 px-5 py-20">
@@ -24,6 +24,7 @@ export default function Universe() {
             Beyond the character is a whole world. Step through a portal to explore what is being built around Cubbie.
           </p>
         </div>
+        <div className="h-64 md:hidden"/>
         <div className="relative overflow-hidden rounded-3xl border border-white/10">
           <img src={`${base}images/characters/abstract.jpg`} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30" />
           <div className="grid gap-4 bg-bg/60 p-4 backdrop-blur-sm md:grid-cols-3">
