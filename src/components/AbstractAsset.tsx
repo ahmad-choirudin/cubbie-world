@@ -8,32 +8,39 @@ const parts = [
 
 export default function AbstractAsset() {
   return (
-    <section id="shapes" className="relative isolate overflow-hidden border-y border-white/10">
+    <section id="shapes" className="relative isolate overflow-hidden border-y border-edge">
       <img
         src={src}
         alt="Floating black spheres, lime forms and glass rings above dark blocks"
+        width={1376}
+        height={768}
+        loading="lazy"
         className="drift absolute inset-0 -z-20 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-bg via-bg/40 to-bg/10" />
-      <div className="mx-auto flex min-h-[70vh] max-w-6xl flex-col justify-end gap-8 px-5 py-16">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-bg via-bg/60 to-bg/10" />
+      <div className="mx-auto flex min-h-[70svh] max-w-[90rem] flex-col justify-end gap-12 px-5 py-16 md:px-10 lg:py-24">
         <div>
-          <h2 className="font-d text-4xl font-bold uppercase sm:text-6xl">Shapes of the Universe</h2>
-          <p className="mt-3 max-w-md text-ink/80">The building blocks floating around every Cubbie.</p>
+          <h2 className="display text-[clamp(2rem,6vw,5.5rem)]">
+            <span className="block">Shapes of</span>
+            <span className="block">the Universe</span>
+          </h2>
+          <p className="mt-6 max-w-md text-ink/80">The building blocks floating around every Cubbie.</p>
         </div>
-        <div className="grid gap-3 sm:grid-cols-3">
-          {parts.map(([n, d]) => (
-            <div key={n} className="rv rounded-2xl bg-bg/70 p-4 ring-1 ring-white/10 backdrop-blur-sm">
-              <p className="font-d font-bold text-acc">{n}</p>
-              <p className="mt-1 text-sm text-dim">{d}</p>
+        <div className="grid gap-8 border-t border-white/25 pt-6 sm:grid-cols-3 sm:gap-10">
+          {parts.map(([n, d], i) => (
+            <div key={n} className="rv">
+              <p className="kicker text-acc">0{i + 1}</p>
+              <p className="font-d mt-2 text-lg font-bold uppercase">{n}</p>
+              <p className="mt-1 text-sm text-ink/70">{d}</p>
             </div>
           ))}
         </div>
         <a
           href={src}
           download="cubbie-universe-shapes.jpg"
-          className="w-fit rounded-full border border-white/25 px-6 py-3 text-sm font-bold uppercase hover:border-acc"
+          className="kicker w-fit border border-white/30 px-6 py-4 transition hover:border-acc hover:text-acc"
         >
-          Save the asset
+          Save the asset ↓
         </a>
       </div>
     </section>
