@@ -1,4 +1,3 @@
-cat > src/components/CharacterSheet.tsx <<'EOF'
 import { useRef, useState } from "react";
 
 const base = import.meta.env.BASE_URL;
@@ -105,4 +104,4 @@ export default function CharacterSheet() {
     </section>
   );
 }
-EOF
+
