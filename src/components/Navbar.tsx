@@ -1,8 +1,7 @@
 const items = [
-  ["World", "#top"],
-  ["Outfit Lab", "#outfits"],
-  ["Collection", "#collection"],
-  ["Story", "#story"],
+  ["Explore", "#outfits"],
+  ["Characters", "#collection"],
+  ["About", "#story"],
 ];
 
 export default function Navbar() {

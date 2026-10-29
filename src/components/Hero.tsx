@@ -1,4 +1,3 @@
-cat > src/components/Hero.tsx <<'EOF'
 import { heroImage } from "../data/characters";
 
 export default function Hero() {
@@ -26,4 +25,3 @@ export default function Hero() {
     </section>
   );
 }
-EOF

@@ -21,3 +21,16 @@ body { @apply bg-bg font-b text-ink antialiased; }
   .rv { opacity: 1; transform: none; transition: none; }
   .sw, .marquee { animation: none; }
 }
+
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.rise { opacity: 0; animation: rise 0.7s ease-out forwards; }
+@keyframes nudge { 0%, 100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(6px); opacity: 0.4; } }
+.nudge { animation: nudge 1.6s ease-in-out infinite; }
+.mascot {
+  -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 65%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 65%, transparent 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise { opacity: 1; animation: none; }
+  .nudge { animation: none; }
+}
