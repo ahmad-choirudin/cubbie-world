@@ -1,27 +1,68 @@
 import { heroImage } from "../data/characters";
 
+const fade = {
+  background:
+    "linear-gradient(to bottom, #090A09 0%, rgba(9,10,9,0) 14%, rgba(9,10,9,0) 55%, #090A09 100%)",
+};
+
 export default function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden md:flex md:min-h-[85vh] md:items-center">
-      <div className="mx-auto w-full max-w-6xl px-5 pt-10 md:py-20">
-        <div className="max-w-xl">
-          <h1 className="font-d text-5xl font-bold uppercase leading-[0.98] sm:text-6xl lg:text-7xl">
-            A Little Character.
-            <br />
-            <span className="text-acc">A Bigger Universe.</span>
-          </h1>
-          <p className="mt-5 text-xl text-dim">Collect your vibe. Build your Cubbie.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#crew" className="rounded-full bg-acc px-6 py-3 text-sm font-bold uppercase text-bg hover:brightness-110">Meet the Cubbies</a>
-            <a href="#story" className="rounded-full border border-white/25 px-6 py-3 text-sm font-bold uppercase hover:border-acc">Explore the world</a>
+    <section
+      id="top"
+      className="relative isolate flex flex-col overflow-hidden lg:min-h-[calc(100svh-4.5rem)] lg:justify-end"
+    >
+      <div className="relative h-[62svh] lg:absolute lg:inset-0 lg:-z-10 lg:h-auto">
+        <img
+          src={heroImage}
+          alt="Cubbie in a black tech jacket with glowing lime details, making a peace sign"
+          width={1376}
+          height={768}
+          className="h-full w-full object-cover object-[88%_center] lg:object-[85%_center]"
+        />
+        <div className="absolute inset-0" style={fade} />
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-bg via-bg/30 to-transparent lg:block" />
+      </div>
+
+      <div className="relative z-10 mx-auto -mt-14 w-full max-w-[90rem] px-5 pb-10 md:px-10 lg:mt-0 lg:pb-14">
+        <p className="kicker rise text-acc" style={{ animationDelay: "0.05s" }}>
+          Cubbie World · Character Universe
+        </p>
+        <h1
+          className="display rise mt-5 text-[clamp(2.4rem,11vw,4rem)] lg:text-[clamp(3.5rem,6.4vw,7rem)]"
+          style={{ animationDelay: "0.15s" }}
+        >
+          <span className="block">A little</span>
+          <span className="block">character.</span>
+          <span className="mt-1 block text-acc">A bigger</span>
+          <span className="block text-acc">universe.</span>
+        </h1>
+
+        <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="rise" style={{ animationDelay: "0.3s" }}>
+            <p className="max-w-xs text-lg text-dim">Collect your vibe. Build your Cubbie.</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="#crew"
+                className="kicker bg-acc px-6 py-4 text-bg transition hover:bg-ink"
+              >
+                Meet the Cubbies →
+              </a>
+              <a
+                href="#story"
+                className="kicker border border-white/30 px-6 py-4 transition hover:border-acc hover:text-acc"
+              >
+                Explore the world
+              </a>
+            </div>
           </div>
+          <a
+            href="#sheet"
+            className="kicker hidden items-center gap-3 text-dim transition hover:text-acc lg:flex"
+          >
+            Scroll <span className="nudge inline-block">↓</span>
+          </a>
         </div>
       </div>
-      <img
-        src={heroImage}
-        alt="Cubbie waving in a black hoodie with glowing green details"
-        className="mt-8 h-[55vh] w-full object-cover object-[85%_center] md:absolute md:inset-0 md:-z-10 md:mt-0 md:h-full"
-      />
     </section>
   );
 }
