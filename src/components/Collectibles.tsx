@@ -15,7 +15,7 @@ export default function Collectibles() {
       <div className="grid items-center gap-10 lg:grid-cols-2">
         <img
           src={`${base}images/characters/collectibles.jpg`}
-          alt="A suited Cubbie displayed in a glass case"
+          alt="A Cubbie in a black utility jacket standing on a round pedestal"
           className="rv aspect-[3/4] w-full rounded-2xl object-cover object-top ring-1 ring-white/10"
         />
         <div>
