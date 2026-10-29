@@ -8,6 +8,9 @@ import Crew from "./components/Crew";
 import Collectibles from "./components/Collectibles";
 import Collection from "./components/Collection";
 import Universe from "./components/Universe";
+import IconicPoster from "./components/IconicPoster";
+import AbstractAsset from "./components/AbstractAsset";
+import BrandBanner from "./components/BrandBanner";
 import About from "./components/About";
 import Footer from "./components/Footer";
 
@@ -37,7 +40,10 @@ export default function App() {
         <Crew />
         <Collectibles />
         <Collection />
+        <AbstractAsset />
+        <IconicPoster />
         <Universe />
+        <BrandBanner />
         <About />
       </main>
       <Footer />

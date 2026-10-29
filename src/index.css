@@ -34,3 +34,7 @@ body { @apply bg-bg font-b text-ink antialiased; }
   .rise { opacity: 1; animation: none; }
   .nudge { animation: none; }
 }
+
+@keyframes drift { from { transform: scale(1.04) translate3d(-1.5%, 0, 0); } to { transform: scale(1.1) translate3d(1.5%, -1.5%, 0); } }
+.drift { animation: drift 24s ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce) { .drift { animation: none; } }
