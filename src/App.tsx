@@ -2,11 +2,9 @@ import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
-import OutfitLab from "./components/OutfitLab";
 import CharacterSheet from "./components/CharacterSheet";
 import Crew from "./components/Crew";
 import Collectibles from "./components/Collectibles";
-import Collection from "./components/Collection";
 import Universe from "./components/Universe";
 import IconicPoster from "./components/IconicPoster";
 import AbstractAsset from "./components/AbstractAsset";
@@ -35,11 +33,9 @@ export default function App() {
       <main>
         <Hero />
         <Marquee />
-        <OutfitLab />
         <CharacterSheet />
         <Crew />
         <Collectibles />
-        <Collection />
         <AbstractAsset />
         <IconicPoster />
         <Universe />

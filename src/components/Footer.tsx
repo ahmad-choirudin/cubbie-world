@@ -2,8 +2,7 @@ import { links, projects, socials } from "../data/projects";
 
 const nav = [
   ["World", "#top"],
-  ["Outfit Lab", "#outfits"],
-  ["Collection", "#collection"],
+  ["Collectibles", "#collectibles"],
   ["Story", "#story"],
 ];
 

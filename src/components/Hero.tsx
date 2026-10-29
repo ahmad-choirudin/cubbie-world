@@ -12,7 +12,7 @@ export default function Hero() {
           </h1>
           <p className="mt-5 text-xl text-dim">Collect your vibe. Build your Cubbie.</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#collection" className="rounded-full bg-acc px-6 py-3 text-sm font-bold uppercase text-bg hover:brightness-110">Meet the Cubbies</a>
+            <a href="#crew" className="rounded-full bg-acc px-6 py-3 text-sm font-bold uppercase text-bg hover:brightness-110">Meet the Cubbies</a>
             <a href="#story" className="rounded-full border border-white/25 px-6 py-3 text-sm font-bold uppercase hover:border-acc">Explore the world</a>
           </div>
         </div>
