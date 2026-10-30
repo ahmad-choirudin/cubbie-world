@@ -62,7 +62,7 @@ export default function Hero() {
                 Meet the Cubbies →
               </a>
               <a
-                href="#story"
+                href="#sheet"
                 className="kicker border border-white/30 px-6 py-4 transition hover:border-acc hover:text-acc"
               >
                 Explore the world
