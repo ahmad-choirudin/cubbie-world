@@ -90,11 +90,10 @@ export default function Collectibles() {
                 key={f}
                 type="button"
                 aria-pressed={on}
-                
                 onClick={() => {
-                if (f === filter) return;
-                setFilter(f);
-                setTouched(true);
+                  if (f === filter) return;
+                  setFilter(f);
+                  setTouched(true);
                 }}
                 className={`kicker shrink-0 border px-4 py-2.5 transition ${
                   on
@@ -116,7 +115,11 @@ export default function Collectibles() {
         {visible.map((c, i) => {
           const l = layout[c.id] ?? fallback;
           return (
-            <li key={`${filter}-${c.id}`} className={`${touched? "rise" :"rv" ${l.span}`} style={{ animationDelay: `${i * 0.06}s` }}>
+            <li
+              key={`${filter}-${c.id}`}
+              className={`${touched ? "rise" : "rv"} ${l.span}`}
+              style={{ animationDelay: `${i * 0.06}s` }}
+            >
               <button
                 type="button"
                 onClick={() => setOpenId(c.id)}
