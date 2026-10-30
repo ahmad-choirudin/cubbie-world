@@ -19,7 +19,8 @@ export default function Universe() {
         loading="lazy"
         className="plx absolute inset-0 -z-20 h-full w-full object-cover object-[62%_center]"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-bg via-bg/30 to-bg" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-bg via-bg/60 to-bg" />
+      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-bg/80 via-bg/20 to-transparent lg:block" />
       <div className="mx-auto flex min-h-[90svh] max-w-[90rem] flex-col justify-between gap-16 px-5 py-20 md:px-10 lg:py-28">
         <div>
           <p className="kicker text-acc">Beyond the character</p>
@@ -27,7 +28,7 @@ export default function Universe() {
             <span className="block">Cubbie</span>
             <span className="block">Universe</span>
           </h2>
-          <p className="mt-6 max-w-md text-ink/80">
+          <p className="mt-6 max-w-md text-ink">
             Beyond the character is a whole world. Step through a portal to explore what is being built around Cubbie.
           </p>
         </div>
