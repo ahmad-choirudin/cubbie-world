@@ -1,7 +1,7 @@
 export const projects = [
   { name: "Cubbie NFT Marketplace", url: "https://cubbienft.my.id/" },
-  { name: "Web3 Research OS", url: "https://web3os.my.id/" },
-  { name: "Airdrop Tracker", url: "https://dropwatch.web.id/" },
+  { name: "Cubbie Web3 Research OS", url: "https://web3os.my.id/" },
+  { name: "Cubbie Airdrop Tracker", url: "https://dropwatch.web.id/" },
 ];
 
 export const socials = [
