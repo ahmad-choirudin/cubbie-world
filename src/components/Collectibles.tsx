@@ -87,7 +87,7 @@ export default function Collectibles() {
     >
       <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-8">
         <div className="lg:col-span-7">
-          <p className="kicker text-acc">NFT minting: coming soon</p>
+          <p className="kicker text-acc">Digital artworks</p>
           <h2 className="display mt-5 text-[clamp(2.2rem,5.6vw,5.5rem)]">Collectibles</h2>
         </div>
         <div className="lg:col-span-4 lg:col-start-9">
