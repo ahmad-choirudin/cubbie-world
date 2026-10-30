@@ -8,7 +8,11 @@ export default function Collectibles() {
   const [filter, setFilter] = useState("All");
   const [touched, setTouched] = useState(false);
   const [openId, setOpenId] = useState<string | null>(null);
+  const [progress, setProgress] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const railRef = useRef<HTMLUListElement>(null);
+  const ticking = useRef(false);
+  const lastOpen = useRef<string | null>(null);
 
   // Only offer labels that at least one piece uses; hide the filter if there is just one.
   const usedLabels = labels.filter((l) => collection.some((c) => c.label === l.name));
@@ -19,10 +23,40 @@ export default function Collectibles() {
   const current = idx >= 0 ? visible[idx] : null;
   const activeLabel = labels.find((l) => l.name === filter);
 
+  const shown = visible.length ? Math.min(visible.length, Math.round(progress * (visible.length - 1)) + 1) : 0;
+
   const step = (d: number) => {
     if (!visible.length || idx < 0) return;
     setOpenId(visible[(idx + d + visible.length) % visible.length].id);
   };
+
+  const onScroll = () => {
+    if (ticking.current) return;
+    ticking.current = true;
+    requestAnimationFrame(() => {
+      ticking.current = false;
+      const el = railRef.current;
+      if (!el) return;
+      const max = el.scrollWidth - el.clientWidth;
+      setProgress(max > 0 ? el.scrollLeft / max : 0);
+    });
+  };
+
+  const scrollRail = (dir: number) => {
+    const el = railRef.current;
+    if (!el) return;
+    const card = el.querySelector("li");
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
+    const w = card ? card.getBoundingClientRect().width + gap : el.clientWidth * 0.8;
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollBy({ left: dir * w, behavior: calm ? "auto" : "smooth" });
+  };
+
+  // Start from the first piece whenever the filter changes.
+  useEffect(() => {
+    railRef.current?.scrollTo({ left: 0 });
+    setProgress(0);
+  }, [filter]);
 
   useEffect(() => {
     const d = dialogRef.current;
@@ -33,6 +67,17 @@ export default function Collectibles() {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [openId]);
+
+  // After closing the viewer, bring the last viewed piece back into view in the rail.
+  useEffect(() => {
+    if (openId) {
+      lastOpen.current = openId;
+      return;
+    }
+    if (!lastOpen.current) return;
+    const el = railRef.current?.querySelector(`[data-id="${lastOpen.current}"]`);
+    el?.scrollIntoView({ inline: "center", block: "nearest" });
   }, [openId]);
 
   return (
@@ -94,11 +139,50 @@ export default function Collectibles() {
         </div>
       )}
 
-      <ul className={`${showFilter ? "mt-12" : "mt-20"} grid items-start gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-20`}>
+      <div className={`${showFilter ? "mt-10" : "mt-16"} flex items-center justify-between gap-6`}>
+        <div className="flex flex-1 items-center gap-4">
+          <span className="kicker shrink-0 text-ink">
+            {pad(shown)} <span className="text-dim">/ {pad(visible.length)}</span>
+          </span>
+          <div className="h-px max-w-xs flex-1 bg-white/15">
+            <div
+              className="h-px bg-acc transition-all duration-300"
+              style={{ width: `${visible.length ? (shown / visible.length) * 100 : 0}%` }}
+            />
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => scrollRail(-1)}
+            disabled={progress <= 0.01}
+            aria-label="Previous pieces"
+            className="h-11 w-11 border border-white/25 transition hover:border-acc hover:text-acc active:border-acc disabled:opacity-30 disabled:hover:border-white/25 disabled:hover:text-ink"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollRail(1)}
+            disabled={progress >= 0.99}
+            aria-label="Next pieces"
+            className="h-11 w-11 border border-white/25 transition hover:border-acc hover:text-acc active:border-acc disabled:opacity-30 disabled:hover:border-white/25 disabled:hover:text-ink"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+
+      <ul
+        ref={railRef}
+        onScroll={onScroll}
+        className="no-bar -mx-5 mt-6 flex snap-x snap-mandatory items-start gap-6 overflow-x-auto overscroll-x-contain scroll-px-5 px-5 py-10 md:-mx-10 md:scroll-px-10 md:px-10 lg:gap-8"
+      >
         {visible.map((c, i) => (
           <li
             key={`${filter}-${c.id}`}
-            className={`${touched ? "rise" : "rv"} ${i % 2 === 1 ? "sm:mt-12" : ""} ${i % 3 === 1 ? "lg:mt-16" : "lg:mt-0"}`}
+            data-id={c.id}
+            className={`${touched ? "rise" : "rv"} w-[78vw] max-w-[24rem] shrink-0 snap-start sm:w-[24rem] lg:w-[26rem] lg:max-w-none ${i % 2 === 1 ? "mt-10" : ""}`}
             style={{ animationDelay: `${i * 0.06}s` }}
           >
             <button
@@ -107,18 +191,17 @@ export default function Collectibles() {
               aria-label={`${c.name}, ${c.category}, ${c.label}. Open larger view.`}
               className="group block w-full text-left transition active:scale-[0.99]"
             >
-              <div
-                className="overflow-hidden bg-coal ring-1 ring-transparent transition group-hover:ring-acc/50 group-focus-visible:ring-acc"
-                style={{ aspectRatio: c.ratio ?? "4 / 5" }}
-              >
+              <div className="relative" style={{ aspectRatio: c.ratio ?? "4 / 5" }}>
+                <div className="pointer-events-none absolute -inset-[8%] bg-[radial-gradient(closest-side,rgba(196,245,106,0.16),transparent)] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100 group-focus-visible:opacity-100" />
                 <img
                   src={c.image}
                   alt=""
                   loading="lazy"
-                  className="h-full w-full object-cover object-top transition duration-700 ease-out group-hover:scale-[1.03] group-active:scale-[1.03]"
+                  draggable={false}
+                  className="relative h-full w-full object-cover object-top transition duration-700 ease-out [mask-image:radial-gradient(ellipse_75%_70%_at_50%_52%,#000_60%,transparent_100%)] group-hover:scale-[1.03] group-active:scale-[1.03]"
                 />
               </div>
-              <div className="mt-5 flex items-baseline justify-between gap-4">
+              <div className="mt-3 flex items-baseline justify-between gap-4">
                 <h3 className="font-d text-lg font-bold uppercase transition group-hover:text-acc">{c.name}</h3>
                 <span className="kicker shrink-0 text-dim">{c.label}</span>
               </div>
