@@ -10,4 +10,8 @@ export const socials = [
   { name: "Discord", url: "#" },
 ];
 
-export const links = { portfolio: "#", github: "https://github.com/ahmad-choirudin/cubbie-world/", email: "#" };
+export const links = {
+  portfolio: "https://www.ahmadchoirudin.my.id/",
+  github: "https://github.com/ahmad-choirudin/cubbie-world/",
+  email: "#",
+};
