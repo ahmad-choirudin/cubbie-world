@@ -11,14 +11,15 @@ const colors = [
 export default function BrandBanner() {
   return (
     <section id="brand" className="relative isolate scroll-mt-20 overflow-hidden">
-      <div className="relative h-72 sm:h-96 lg:absolute lg:inset-0 lg:-z-10 lg:h-auto">
+    <div className="relative h-72 overflow-hidden sm:h-96 lg:absolute lg:inset-0 lg:-z-10 lg:h-auto">
+      
         <img
           src={src}
           alt="A Cubbie in a black tech jacket stands in a dark corridor of angular shapes lit by lime lines"
           width={1584}
           height={672}
           loading="lazy"
-          className="h-full w-full object-cover object-[78%_center]"
+          className="plx h-full w-full object-cover object-[78%_center]"
         />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-bg to-transparent" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-bg to-transparent" />
