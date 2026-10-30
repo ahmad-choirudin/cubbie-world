@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { characters } from "../data/characters";
 
 const base = import.meta.env.BASE_URL;
 
@@ -16,6 +17,11 @@ const palette = [
   ["Mist", "#ECEFE8"],
 ];
 
+// Identity text comes from the project data (src/data/characters.ts).
+// Rarity, supply and per-character lore are not in the data yet. When a field
+// like `rarity` is added to Character, add a row for it in `specs` below.
+const sheet = characters.find((c) => c.id === "character-sheet");
+
 const pad = (n: number) => String(n).padStart(2, "0");
 
 export default function CharacterSheet() {
@@ -24,20 +30,38 @@ export default function CharacterSheet() {
   const go = (d: number) => setI((n) => (n + d + views.length) % views.length);
   const v = views[i];
 
+  const specs: [string, string][] = [
+    ...(sheet ? ([["Collection", sheet.label]] as [string, string][]) : []),
+    ["Views", views.map((x) => x.label).join(" · ")],
+  ];
+
+  const caption = (
+    <>
+      <p className="kicker text-acc">View {pad(i + 1)}</p>
+      <h3 className="display mt-4 text-[clamp(2.6rem,7vw,6rem)]" aria-live="polite">
+        {v.label}
+      </h3>
+      <p className="mt-5 max-w-md text-dim">{v.note}</p>
+    </>
+  );
+
   return (
     <section
       id="sheet"
       className="mx-auto max-w-[90rem] scroll-mt-20 px-5 py-24 md:px-10 lg:py-32"
     >
-      <p className="kicker text-acc">Front · Side · Back</p>
+      <div className="flex flex-wrap items-center gap-3">
+        <p className="kicker text-acc">Front · Side · Back</p>
+        {sheet && <span className="kicker border border-acc/60 px-2 py-1 text-acc">{sheet.label}</span>}
+      </div>
       <h2 className="display mt-5 text-[clamp(2.4rem,6vw,5.5rem)]">
         <span className="block">Character</span>
         <span className="block">Sheet</span>
       </h2>
-      <p className="mt-6 max-w-lg text-dim">Swipe the image, tap the arrows or pick a view.</p>
+      {sheet && <p className="mt-6 max-w-lg text-dim">{sheet.description}</p>}
 
       <div className="mt-14 grid items-start gap-12 lg:grid-cols-12 lg:gap-8">
-        <div className="mx-auto w-full max-w-md lg:col-span-5 lg:mx-0">
+        <div className="mx-auto w-full max-w-md lg:col-span-6 lg:mx-0 lg:max-w-xl">
           <div className="relative bg-coal p-3 ring-1 ring-edge sm:p-4">
             <span className="pointer-events-none absolute left-0 top-0 z-10 h-5 w-5 border-l-2 border-t-2 border-acc" />
             <span className="pointer-events-none absolute bottom-0 right-0 z-10 h-5 w-5 border-b-2 border-r-2 border-acc" />
@@ -79,21 +103,23 @@ export default function CharacterSheet() {
               <button
                 onClick={() => go(-1)}
                 aria-label="Previous view"
-                className="absolute left-3 top-1/2 h-10 w-10 -translate-y-1/2 border border-white/20 bg-bg/70 transition hover:border-acc hover:text-acc"
+                className="absolute left-3 top-1/2 h-11 w-11 -translate-y-1/2 border border-white/20 bg-bg/70 transition hover:border-acc hover:text-acc active:border-acc"
               >
                 ‹
               </button>
               <button
                 onClick={() => go(1)}
                 aria-label="Next view"
-                className="absolute right-3 top-1/2 h-10 w-10 -translate-y-1/2 border border-white/20 bg-bg/70 transition hover:border-acc hover:text-acc"
+                className="absolute right-3 top-1/2 h-11 w-11 -translate-y-1/2 border border-white/20 bg-bg/70 transition hover:border-acc hover:text-acc active:border-acc"
               >
                 ›
               </button>
             </div>
           </div>
 
-          <div className="mt-5 grid grid-cols-3 gap-3">
+          <div className="mt-6 lg:hidden">{caption}</div>
+
+          <div className="mt-6 grid grid-cols-3 gap-3">
             {views.map((x, n) => (
               <button
                 key={x.id}
@@ -110,16 +136,22 @@ export default function CharacterSheet() {
               </button>
             ))}
           </div>
+          <p className="mt-4 text-sm text-dim">Swipe the image, tap the arrows or pick a view.</p>
         </div>
 
-        <div className="lg:col-span-6 lg:col-start-7 lg:pt-10">
-          <p className="kicker text-acc">View {pad(i + 1)}</p>
-          <h3 className="display mt-4 text-[clamp(3rem,7vw,6rem)]" aria-live="polite">
-            {v.label}
-          </h3>
-          <p className="mt-5 max-w-md text-dim">{v.note}</p>
+        <div className="lg:col-span-5 lg:col-start-8 lg:pt-10">
+          <div className="hidden lg:block">{caption}</div>
 
-          <p className="kicker mt-14 text-dim">Signature items</p>
+          <dl className="border-t border-edge text-sm lg:mt-12">
+            {specs.map(([k, val]) => (
+              <div key={k} className="grid grid-cols-[7rem_1fr] gap-4 border-b border-edge py-3">
+                <dt className="kicker text-dim">{k}</dt>
+                <dd>{val}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <p className="kicker mt-12 text-dim">Signature items</p>
           <ul className="mt-4 border-t border-edge">
             {items.map((x, n) => (
               <li key={x} className="flex items-baseline gap-4 border-b border-edge py-3 text-sm">
@@ -129,7 +161,7 @@ export default function CharacterSheet() {
             ))}
           </ul>
 
-          <p className="kicker mt-14 text-dim">Palette</p>
+          <p className="kicker mt-12 text-dim">Palette</p>
           <div className="mt-4 flex flex-wrap gap-6">
             {palette.map(([n, h]) => (
               <div key={h} className="flex items-center gap-3">
@@ -140,6 +172,21 @@ export default function CharacterSheet() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-12 flex flex-wrap gap-3">
+            <a
+              href="#collectibles"
+              className="kicker border border-white/30 px-6 py-4 transition hover:border-acc hover:text-acc active:border-acc"
+            >
+              ← The collection
+            </a>
+            <a
+              href="#cubbie-story"
+              className="kicker bg-acc px-6 py-4 text-bg transition hover:bg-ink active:bg-ink"
+            >
+              Read the story →
+            </a>
           </div>
         </div>
       </div>
