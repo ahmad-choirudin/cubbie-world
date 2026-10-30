@@ -23,20 +23,22 @@ export default function Footer() {
             Email me
           </a>
         </div>
-        <div className="grid content-start gap-3 text-sm text-dim lg:col-span-2 lg:col-start-8">
+        
+        <div className="grid content-start text-sm text-dim lg:col-span-2 lg:col-start-8">
           <p className="kicker mb-1 text-acc">Navigate</p>
           {nav.map(([n, h]) => (
-            <a key={n} href={h} className="transition hover:text-acc">{n}</a>
+            <a key={n} href={h} className="py-3 transition hover:text-acc">{n}</a>
           ))}
         </div>
-        <div className="grid content-start gap-3 text-sm text-dim lg:col-span-3 lg:col-start-10">
+        <div className="grid content-start text-sm text-dim lg:col-span-3 lg:col-start-10">
           <p className="kicker mb-1 text-acc">Elsewhere</p>
           {[...projects, ...socials].map((p) => (
-            <a key={p.name} href={p.url} target="_blank" rel="noreferrer" className="transition hover:text-acc">
+            <a key={p.name} href={p.url} target="_blank" rel="noreferrer" className="py-3 transition hover:text-acc">
               {p.name}
             </a>
           ))}
         </div>
+        
       </div>
       <p className="kicker border-t border-edge px-5 py-6 text-center text-dim">
         &copy; {new Date().getFullYear()} Cubbie World. All rights reserved.
