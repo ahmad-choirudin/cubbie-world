@@ -3,16 +3,16 @@ import { links } from "../data/projects";
 const cards = [
   ["Creative process", "Character sheets, outfit studies and 3D renders, all from one set of shapes and colors."],
   ["Design", "A black and lime palette with cinematic lighting, kept the same across every edition."],
-  ["Web projects", "Cubbie NFT Marketplace, Web3 Research OS and Airdrop Tracker."],
+  ["Web3 tools", "A small set of tools built around the character. Find them in the Universe section."],
 ];
 
 export default function About() {
   return (
     <section
-      id="story"
+      id="about"
       className="mx-auto max-w-[90rem] scroll-mt-20 px-5 py-24 md:px-10 lg:py-32"
     >
-      <p className="kicker text-acc">About / Story</p>
+      <p className="kicker text-acc">About</p>
       <div className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">
         <h2 className="display text-[clamp(2.2rem,6vw,5.5rem)] lg:col-span-8">
           Not just a toy. <span className="text-acc">Your little universe.</span>
@@ -35,12 +35,16 @@ export default function About() {
       <div className="mt-12 flex flex-wrap gap-3">
         <a
           href={links.portfolio}
+          target="_blank"
+          rel="noreferrer"
           className="kicker bg-acc px-6 py-4 text-bg transition hover:bg-ink"
         >
           Main portfolio
         </a>
         <a
           href={links.github}
+          target="_blank"
+          rel="noreferrer"
           className="kicker border border-white/30 px-6 py-4 transition hover:border-acc hover:text-acc"
         >
           GitHub
