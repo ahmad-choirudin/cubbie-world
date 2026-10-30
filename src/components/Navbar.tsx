@@ -19,16 +19,18 @@ export default function Navbar() {
             </a>
           ))}
         </div>
+        
         <a
           href="#universe"
-          className="kicker border border-acc bg-acc px-4 py-2.5 text-bg transition hover:bg-transparent hover:text-acc"
+          className="kicker inline-flex min-h-11 items-center border border-acc bg-acc px-4 text-bg transition hover:bg-transparent hover:text-acc"
         >
           Enter Universe
         </a>
       </nav>
-      <div className="no-bar flex gap-6 overflow-x-auto px-5 pb-3 md:hidden">
+      
+      <div className="no-bar flex gap-6 overflow-x-auto px-5 md:hidden">
         {items.map(([n, h]) => (
-          <a key={n} href={h} className="kicker shrink-0 text-dim">
+          <a key={n} href={h} className="kicker inline-flex min-h-11 shrink-0 items-center text-dim">
             {n}
           </a>
         ))}
