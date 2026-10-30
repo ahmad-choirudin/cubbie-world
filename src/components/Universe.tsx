@@ -17,7 +17,7 @@ export default function Universe() {
         width={1376}
         height={768}
         loading="lazy"
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-[62%_center]"
+        className="plx absolute inset-0 -z-20 h-full w-full object-cover object-[62%_center]"
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-bg via-bg/30 to-bg" />
       <div className="mx-auto flex min-h-[90svh] max-w-[90rem] flex-col justify-between gap-16 px-5 py-20 md:px-10 lg:py-28">
