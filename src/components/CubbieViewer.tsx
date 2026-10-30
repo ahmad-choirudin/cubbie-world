@@ -20,10 +20,10 @@ export default function CubbieViewer({ src, onReady, className = "" }: Props) {
 
     (async () => {
       try {
-        // Skip everything (and never download three.js) if the model file is missing.
         const head = await fetch(src, { method: "HEAD" });
         const type = head.headers.get("content-type") ?? "";
-        if (!head.ok || type.includes("text/html")) return;
+        const bytes = Number(head.headers.get("content-length") ?? "0");
+        if (!head.ok || type.includes("text/html") || (bytes > 0 && bytes < 1024)) return;
 
         const [THREE, { GLTFLoader }, { OrbitControls }, { RoomEnvironment }] = await Promise.all([
           import("three"),
@@ -145,8 +145,9 @@ export default function CubbieViewer({ src, onReady, className = "" }: Props) {
         loaded = true;
         renderer.setAnimationLoop(frame);
         readyRef.current?.();
-      } catch (err) {
+        } catch (err) {
         console.warn("CubbieViewer: could not load the 3D model.", err);
+        cleanup?.();
       }
     })();
 
