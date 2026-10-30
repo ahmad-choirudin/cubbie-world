@@ -17,9 +17,6 @@ const palette = [
   ["Mist", "#ECEFE8"],
 ];
 
-// Identity text comes from the project data (src/data/characters.ts).
-// Rarity, supply and per-character lore are not in the data yet. When a field
-// like `rarity` is added to Character, add a row for it in `specs` below.
 const sheet = characters.find((c) => c.id === "character-sheet");
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -94,6 +91,7 @@ export default function CharacterSheet() {
                   alt={n === i ? `${x.label} view of Cubbie` : ""}
                   aria-hidden={n !== i}
                   draggable={false}
+                  loading="lazy"
                   className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 motion-reduce:transition-none ${n === i ? "opacity-100" : "opacity-0"}`}
                 />
               ))}
@@ -130,6 +128,7 @@ export default function CharacterSheet() {
                 <img
                   src={x.src}
                   alt=""
+                  loading="lazy"
                   className={`aspect-[3/4] w-full object-cover transition ${n === i ? "opacity-100" : "opacity-50"}`}
                 />
                 <span className={`kicker mt-2 block ${n === i ? "text-acc" : "text-dim"}`}>{x.label}</span>
