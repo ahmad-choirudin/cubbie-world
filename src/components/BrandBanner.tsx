@@ -2,12 +2,6 @@ import { projects, socials } from "../data/projects";
 
 const src = `${import.meta.env.BASE_URL}images/characters/banner.jpg`;
 
-const colors = [
-  ["#090A09", "Void"],
-  ["#C4F56A", "Lime"],
-  ["#ECEFE8", "Mist"],
-];
-
 export default function BrandBanner() {
   return (
     <section id="brand" className="relative isolate scroll-mt-20 overflow-hidden">
@@ -52,17 +46,6 @@ export default function BrandBanner() {
               >
                 {s.name}
               </a>
-            ))}
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/15 pt-5">
-            {colors.map(([hex, name]) => (
-              <div key={hex} className="flex items-center gap-2">
-                <span className="h-4 w-4 ring-1 ring-white/30" style={{ background: hex }} />
-                <span className="kicker text-dim">
-                  {name} {hex}
-                </span>
-              </div>
             ))}
           </div>
         </div>
