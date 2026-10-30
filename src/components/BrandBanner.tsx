@@ -11,8 +11,7 @@ const colors = [
 export default function BrandBanner() {
   return (
     <section id="brand" className="relative isolate scroll-mt-20 overflow-hidden">
-    <div className="relative h-72 overflow-hidden sm:h-96 lg:absolute lg:inset-0 lg:-z-10 lg:h-auto">
-      
+      <div className="relative h-72 overflow-hidden sm:h-96 lg:absolute lg:inset-0 lg:-z-10 lg:h-auto">
         <img
           src={src}
           alt="A Cubbie in a black tech jacket stands in a dark corridor of angular shapes lit by lime lines"
