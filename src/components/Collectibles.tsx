@@ -95,7 +95,7 @@ export default function Collectibles() {
                   setFilter(f);
                   setTouched(true);
                 }}
-                className={`kicker shrink-0 border px-4 py-2.5 transition ${
+                className={`kicker min-h-11 shrink-0 border px-4 transition ${
                   on
                     ? "border-acc bg-acc text-bg"
                     : "border-white/20 text-dim hover:border-acc hover:text-acc active:border-acc"
@@ -172,7 +172,7 @@ export default function Collectibles() {
             <button
               type="button"
               onClick={() => setOpenId(null)}
-              className="kicker absolute right-3 top-3 z-10 border border-white/25 bg-bg/80 px-3 py-2 transition hover:border-acc hover:text-acc"
+              className="kicker absolute right-3 top-3 z-10 min-h-11 border border-white/25 bg-bg/80 px-4 transition hover:border-acc hover:text-acc"
             >
               Close ✕
             </button>
@@ -180,7 +180,7 @@ export default function Collectibles() {
               <img
                 src={current.image}
                 alt={current.description}
-                className="max-h-[56svh] w-full object-contain md:max-h-[94svh]"
+                className="max-h-[46svh] w-full object-contain md:max-h-[94svh]"
               />
             </div>
             <div className="flex flex-col justify-between gap-8 overflow-y-auto p-6">
