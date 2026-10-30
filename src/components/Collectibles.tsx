@@ -30,6 +30,7 @@ const pieces: Character[] = [
 
 export default function Collectibles() {
   const [filter, setFilter] = useState("All");
+  const [touched, setTouched] = useState(false);
   const [openId, setOpenId] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -89,7 +90,12 @@ export default function Collectibles() {
                 key={f}
                 type="button"
                 aria-pressed={on}
-                onClick={() => setFilter(f)}
+                
+                onClick={() => {
+                if (f === filter) return;
+                setFilter(f);
+                setTouched(true);
+                }}
                 className={`kicker shrink-0 border px-4 py-2.5 transition ${
                   on
                     ? "border-acc bg-acc text-bg"
@@ -110,7 +116,7 @@ export default function Collectibles() {
         {visible.map((c, i) => {
           const l = layout[c.id] ?? fallback;
           return (
-            <li key={`${filter}-${c.id}`} className={`rise ${l.span}`} style={{ animationDelay: `${i * 0.06}s` }}>
+            <li key={`${filter}-${c.id}`} className={`${touched? "rise" :"rv" ${l.span}`} style={{ animationDelay: `${i * 0.06}s` }}>
               <button
                 type="button"
                 onClick={() => setOpenId(c.id)}
