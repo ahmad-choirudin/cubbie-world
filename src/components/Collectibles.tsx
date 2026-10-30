@@ -93,7 +93,7 @@ export default function Collectibles() {
         <div className="lg:col-span-4 lg:col-start-9">
           <p className="kicker text-dim">{pad(collection.length)} pieces</p>
           <p className="mt-3 max-w-md text-dim">
-            Cubbie characters as digital artworks, made to be collected. They are not minted as NFTs yet.
+            Cubbie characters as digital artworks, made to be collected and admired.
           </p>
           <a
             href={projects[0].url}
