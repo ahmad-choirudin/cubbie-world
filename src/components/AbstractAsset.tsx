@@ -28,7 +28,7 @@ export default function AbstractAsset() {
           <p className="kicker text-acc">Building blocks</p>
           <h2 className="display mt-4 text-[clamp(1.7rem,2.9vw,2.75rem)]">
             <span className="block">Shapes of</span>
-            <span className="block">the Universe</span>
+            <span className="block">the World</span>
           </h2>
           <p className="mt-5 max-w-sm text-dim">The building blocks floating around every Cubbie.</p>
 
