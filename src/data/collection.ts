@@ -43,7 +43,7 @@ export const collection: Piece[] = [
     id: "coder",
     name: "CUBBIE Coder",
     category: "Programming",
-    label: "Original",
+    label: "Limited Edition",
     description: "Turning ideas into code, one line at a time. Built for the digital world.",
     image: dir + "cubbie-coder.jpg",
   },
