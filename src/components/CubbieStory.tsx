@@ -3,13 +3,13 @@ const base = import.meta.env.BASE_URL;
 const chapters = [
   {
     no: "01",
-    title: "The Quiet Corridor",
+    title: "The Beginning",
     image: `${base}images/characters/story-1.jpg`,
     alt: "A small Cubbie in a long coat stands in a corridor of black monoliths lit by green light",
-    quote: "Every universe starts with one small step.",
+    quote: "Every universe starts somewhere.",
     text: [
-      "Cubbie did not walk into the city of black stone because it was brave. It walked in because it was curious.",
-      "Somewhere ahead, past the glowing lines and the drifting sparks, something was waiting to be found.",
+      "Cubbie did not wake up knowing where it came from. It simply opened its eyes in a world that had forgotten its name.",
+      "Somewhere beyond the darkness, a strange light was calling.",
     ],
   },
 ];
