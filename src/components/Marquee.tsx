@@ -1,11 +1,26 @@
-const text = "Dress your Cubbie • Find your form • Own your little world • ";
+const words = ["Dress your Cubbie", "Find your form", "Own your little world"];
+
+function Row() {
+  return (
+    <span className="flex shrink-0 items-center">
+      {Array.from({ length: 3 })
+        .flatMap(() => words)
+        .map((w, i) => (
+          <span key={i} className="flex items-center">
+            <span>{w}</span>
+            <span className="mx-8 inline-block h-2 w-2 bg-acc md:mx-12" />
+          </span>
+        ))}
+    </span>
+  );
+}
 
 export default function Marquee() {
   return (
-    <div className="mt-10 overflow-hidden border-y border-white/10 bg-white/5 py-4" aria-hidden="true">
-      <div className="marquee flex w-max whitespace-nowrap font-d text-2xl font-bold uppercase text-ink/40">
-        <span>{text.repeat(4)}</span>
-        <span>{text.repeat(4)}</span>
+    <div className="mt-10 overflow-hidden border-y border-edge py-5" aria-hidden="true">
+      <div className="marquee display flex w-max whitespace-nowrap text-3xl text-ink/25 md:text-5xl">
+        <Row />
+        <Row />
       </div>
     </div>
   );
