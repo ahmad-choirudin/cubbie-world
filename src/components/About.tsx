@@ -39,7 +39,7 @@ export default function About() {
           rel="noreferrer"
           className="kicker bg-acc px-6 py-4 text-bg transition hover:bg-ink"
         >
-          Main portfolio
+          Meet the creator
         </a>
         <a
           href={links.github}
