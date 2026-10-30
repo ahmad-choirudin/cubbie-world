@@ -13,8 +13,7 @@ import CubbieStory from "./components/CubbieStory";
 import About from "./components/About";
 import Footer from "./components/Footer";
 
-// Section headers and blocks that fade in on scroll, in addition to the
-// elements that already carry the `rv` class. Kept here so no component needs editing.
+// Section headers and blocks that fade in on scroll //
 const revealTargets = [
   "#sheet > :not(:last-child)",
   "#sheet > div:last-child > *",
@@ -26,9 +25,9 @@ const revealTargets = [
   "#cubbie-story > p",
   "#cubbie-story > h2",
   "#brand > div:last-child > div",
-  "#story > p",
-  "#story > div:nth-child(2)",
-  "#story > div:last-child",
+  "#about > p",
+  "#about > div:nth-child(2)",
+  "#about > div:last-child",
 ];
 
 export default function App() {
