@@ -1,9 +1,9 @@
-const src = `${import.meta.env.BASE_URL}images/characters/crew.jpg`;
+const dir = `${import.meta.env.BASE_URL}images/characters/`;
 
 const crew = [
-  { no: "01", name: "Tech Hoodie", x: "0%", text: "Black hoodie with glowing lime pockets and sneakers that light up." },
-  { no: "02", name: "Utility Jacket", x: "50%", text: "Zip jacket with cargo pockets, a crossbody bag and sturdy boots." },
-  { no: "03", name: "Tactical Vest", x: "100%", text: "Layered vest over a black top, with a smartwatch on the wrist." },
+  { no: "01", name: "Tech Hoodie", image: "crew-1.jpg", text: "Black hoodie with glowing lime pockets and sneakers that light up." },
+  { no: "02", name: "Utility Jacket", image: "crew-2.jpg", text: "Zip jacket with cargo pockets, a crossbody bag and sturdy boots." },
+  { no: "03", name: "Tactical Vest", image: "crew-3.jpg", text: "Layered vest over a black top, with a smartwatch on the wrist." },
 ];
 
 export default function Crew() {
@@ -19,14 +19,17 @@ export default function Crew() {
 
       <div className="mt-14 grid gap-8 sm:grid-cols-3 sm:pb-14">
         {crew.map((m, i) => (
-          <article key={m.no} className={`rv ${i === 1 ? "sm:mt-14" : ""}`}>
-            <div className="bg-coal p-2 ring-1 ring-edge transition hover:ring-acc/60">
-              <div
-                role="img"
-                aria-label={m.name}
-                className="aspect-[459/768] w-full bg-black"
-                style={{ backgroundImage: `url(${src})`, backgroundSize: "300% 100%", backgroundPosition: `${m.x} 0` }}
-              />
+          <article key={m.no} className={`rv group ${i === 1 ? "sm:mt-14" : ""}`}>
+            <div className="overflow-hidden bg-coal p-2 ring-1 ring-edge transition group-hover:ring-acc/60">
+              <div className="aspect-[3/5] w-full overflow-hidden bg-black">
+                <img
+                  src={dir + m.image}
+                  alt={m.name}
+                  loading="lazy"
+                  draggable={false}
+                  className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
+                />
+              </div>
             </div>
             <div className="mt-4">
               <p className="kicker text-acc">Crew {m.no}</p>
