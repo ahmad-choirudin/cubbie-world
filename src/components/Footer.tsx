@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
       </div>
       <p className="kicker border-t border-edge px-5 py-6 text-center text-dim">
-        &copy; {new Date().getFullYear()} Cubbie World. Personal project by Ahmad Choirudin.
+        &copy; {new Date().getFullYear()} Cubbie World.
       </p>
     </footer>
   );
